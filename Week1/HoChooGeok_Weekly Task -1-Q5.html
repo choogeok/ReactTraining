@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div id="login"> 
+    <h2>Welcome to the Fast ATM Machine </h2>
+    <p> Please Insert your ATM card and Enter you Pin Number </p>
+    <input type="number" id="pin" name="pin" value="" placeholder="Pin Number"> <br><br>
+    <button onclick="checkPin()"> Enter Pin </button>
+    <h3 id="displayPinError"> </h3>
+  </div>
+  
+  <div id="allMenu">
+    <!-- Option Menu -->
+    <div id="menu">
+      <h6> 1. Withdraw Money</h6>
+      <h6> 2. Check Balance for Saving Account</h6>
+      <h6> 3. Check Balance for Current Account</h6>
+      <h6> 4. Change Pin</h6>
+      <label for="select"> Please Enter Your Option Number </label>
+      <input type="number" id="select" name="select" value="" placeholder="Enter Option Number"> <br><br>
+      <button onclick="selectMenu()"> Select Number </button>
+      <h3 id="optionError"> </h3>
+    </div>
+
+    <!-- Option - Withdraw -->
+    <div id="withdraw">
+      <label for="wdraw"> Enter Amount to Withdraw</label>
+      <input type="number" id="wdraw" name="wdraw" placeholder="Enter Amount">
+      <button onclick="wdraw()"> Withdraw </button>
+      <h3 id="withdrawDisplay"> </h3>
+    </div>
+
+    <!-- Option - Check Saving Account -->
+    <div id="saving">
+      <h3> The Balance for Saving Account </h3>
+      <h3 id="savingDiplay"> </h3>
+    </div>
+
+
+    <!-- Option - Check Current Account -->
+    <div id="current">
+      <h3> The Balance for Current Account </h3>
+      <h3 id="currentDiplay"> </h3>
+    </div>
+
+    <!-- Option - Change Pin -->
+    <div id="changePin">
+      <label for="oldPin"> Enter Current Pin</label>
+      <input type="number" id="oldPin" name="oldPin" placeholder="Enter Current Pin">
+      <button onclick="checkOldPin()"> Change Pin </button>
+      <h3 id="pinError"> </h3>
+    </div>
+
+    <div id="newPin">
+      <label for="changeValue"> Enter New Pin</label>
+      <input type="number" id="changeValue" name="changeValue" placeholder="Enter New Pin">
+      <button onclick="changePin()"> Change Pin </button>
+      <h3 id="newPinDisplay"> </h3>
+    </div>
+  </div>
+
+  <script>
+    var original = 1000;
+    var currentAmt = 2000;
+    var pinNum = 1234;
+
+    // To Hide the Menu
+    window.onload = () => {
+      document.getElementById("allMenu").style.visibility = "hidden";
+    }
+
+    // To check the Pin for Menu Display
+    checkPin = () => {
+      let pin = Math.round(document.getElementById("pin").value);
+      if (pin === pinNum) {
+        document.getElementById("menu").style.visibility = "visible";
+        document.getElementById("login").style.visibility = "hidden";
+      } else {
+        document.getElementById("displayPinError").innerHTML = "Wrong Pin Number, Please Enter Your Pin Again";
+      }
+    }
+
+    // To Display the Selected Option Menu
+    selectMenu = () => {
+      let option = Math.round(document.getElementById("select").value);
+      if (option > 0 && option <= 4) {
+        switch (option) {
+          case 1:
+            document.getElementById("withdraw").style.visibility = "visible";
+            document.getElementById("saving").style.visibility = "hidden";
+            document.getElementById("current").style.visibility = "hidden";
+            document.getElementById("changePin").style.visibility = "hidden";
+            break;
+          case 2:
+            document.getElementById("saving").style.visibility = "visible";
+            document.getElementById("withdraw").style.visibility = "hidden";
+            document.getElementById("current").style.visibility = "hidden";
+            document.getElementById("changePin").style.visibility = "hidden";
+            saving();
+            break;
+          case 3:
+            document.getElementById("current").style.visibility = "visible";
+            document.getElementById("withdraw").style.visibility = "hidden";
+            document.getElementById("saving").style.visibility = "hidden";
+            document.getElementById("changePin").style.visibility = "hidden";
+            current();
+            break;
+          case 4:
+            document.getElementById("changePin").style.visibility = "visible";
+            document.getElementById("newPin").style.visibility = "hidden";
+            document.getElementById("current").style.visibility = "hidden";
+            document.getElementById("withdraw").style.visibility = "hidden";
+            document.getElementById("saving").style.visibility = "hidden";
+            break;
+        }
+      }
+      else {
+        document.getElementById("optionError").innerHTML = "Please Enter number between 1 to 4";
+      }
+    }
+
+    // The withdraw function for option 1
+    wdraw = () => {
+      let amount = Math.round(document.getElementById("wdraw").value);
+      var balance = original - amount;
+      if (balance < 0) {
+        document.getElementById("withdrawDisplay").innerHTML = "Insufficient Amount to withdraw"
+      } else {
+        original = balance;
+        document.getElementById("withdrawDisplay").innerHTML = "Amount withdrawn: " + amount + " Balance: " + original;
+        return original;
+      }
+    }
+
+    // The Saving account balance function for option 2
+    saving = () => {
+      document.getElementById("savingDiplay").innerHTML = original;
+    }
+
+    // The Current account balance function for option 3
+    current = () => {
+      document.getElementById("currentDiplay").innerHTML = currentAmt;
+    }
+
+    // To check the user input of the Pin current value before Display the New Pin Menu
+    checkOldPin = () => {
+      let oldValue = Math.round(document.getElementById("oldPin").value);
+      if (oldValue === pinNum) {
+        document.getElementById("newPin").style.visibility = "visible";
+        document.getElementById("changePin").style.visibility = "hidden";
+      } else {
+        document.getElementById("pinError").innerHTML = "The current Pin is wrong. Please try again"
+      }
+    }
+
+    // For user to Input the New Pin and Update the Pin Value
+    changePin = () => {
+      let newValue = Math.round(document.getElementById("changeValue").value);
+      console.log(newValue);
+      pinNum = newValue;
+      document.getElementById("newPinDisplay").innerHTML = "The new Pin is : " + pinNum
+      return pinNum;
+    }
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,114 @@
+<!-- <!DOCTYPE html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head> -->
+
+
+
+<!-- Week 1 - Daily Task 1  - Date:10th October 22 -->
+<!-- Question 1 -->
+<script>
+  console.log('A' - 1); // NaN 
+  console.log('A' + 1); // A1 
+  console.log(2 + '2' + '2'); // 222 
+  console.log('hello' + 'world' + 89); // helloworld89 
+  console.log('hello' - 'world' + 89); // NaN 
+  console.log('hello' + 78); // hello78 
+  console.log('78' - 90 + '2'); // -122
+  console.log(2 - '2' + 90); // 90 
+  console.log(89 - '90' / 2); // 44 
+  console.log(89 + 'hello' + 90 / 9); // 89hello10 
+  console.log(2 + '2' + null); //22null 
+  console.log(true > false); // true
+  console.log(true + false); // 1
+  console.log((true + false) > 3); //false
+</script>
+
+<!-- 2.Extract first five letters from a string ('gfuh ieiuei') -->
+var str = 'gfuh ieiuei';
+console.log(str.slice(0,4));
+
+<!-- 3. Get the length of a string and make it uppercase ('hduej dij') -->
+var str = 'hduej dij';
+console.log(str.length);
+console.log(str.toUpperCase());
+
+<!-- 4. Take a string, make it uppercase and trim it (' biji jdo ') -->
+var str = ' biji jdo ';
+console.log(str.toUpperCase());
+console.log(str.trim());
+
+<!-- 5. Replace specified word in a string ('', '') -->
+var str = ' I love to eat durian';
+console.log(str.replace('durian','apple'));
+
+<!-- 6. Find the duplicate in a string() (use array) -->
+var array = ['A','B','C','D','A','E'];
+for (let i=0;i<array.length-1;i++){ <script>
+  var array = ["A", "B", "B", "E"];
+  for (let i = 0; i < array.length; i++) {for (let j=0; j < array.length; j++) {if(i!=j){ if (array[i]===array[j ]){
+    alert("duplicate value");}} console.log("value of i" + i); console.log("value of j" + j); } } </script>
+
+    <!-- 7. Reverse a string (use array method) -->
+    
+    <script>
+      let str = "ABCDE"
+      let reverseStr = "";
+      for (let i = str.length; i >= 0; i--) {
+        reverseStr = reverseStr + str[i];
+      }
+    </script>
+
+    <!-- 8. Find the highest and lowest value in array -->
+    
+    <script>
+      var array = ["1", "2", "3", "4"];
+      var max = Math.max(...array);
+      var min = Math.min(...array);
+    </script>
+
+    <!-- 9. Practice array of objects -->
+    <!-- 10. Display first 3 elements in an array -->
+    
+    <script>
+      var array = ["1", "2", "3", "4"];
+      for (let i = 0; i < 3; i++) {
+        var arrayDisplay = array[i]
+        console.log(arrayDisplay);
+      }
+    </script>
+
+    <!-- 11. Remove 4th (index) element and add 2 element there-->
+    
+    <script>
+      var array = ["A", "B", "C", "D", "E"];
+      array.splice(4, 1, "G", "F");
+      console.log(array);
+    </script>
+
+    <!-- 12. var str1 = 'Today is';
+  var str2 = '  a beautiful day  '
+  var str3 = ' In Hawaii. '
+  Result = 'Today is a beautiful day In Hawaii.'
+  Use the str1, str2, str3 variables to create the Result string. Keep the extra spaces, lowercase and uppercase letters in mind.  -->
+
+      <script>
+      var str1 = 'Today is';
+      var str2 = ' a beautiful day '
+      var str3 = ' In Hawaii. '
+      var newStr2 = str2.trim();
+      var newStr3 = str3.trim();
+      var newStr4 = newStr3.replace("In", "in");
+      var newStr = str1 + " " + newStr2 + " " + newStr4;
+    </script>
+
+
+    </html>

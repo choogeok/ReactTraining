@@ -1,0 +1,361 @@
+<!-- <!DOCTYPE html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head> -->
+
+<!-- Week 1 - Week Task 1-->
+
+<!-- 1.Write a js method, when user click on button, display random integer below it. -->
+
+<button onclick="randomNum()"> Display  </button>
+  <h4> Random Number between 0 to 100 is: </h4>
+  <p id="display"> </p>
+ 
+<script>
+    function randomNum() {
+        let result = 0;
+        result = Math.round(Math.random() * 100);
+        document.getElementById("display").innerHTML = result;
+    }
+</script>
+
+
+<!-- 2.Write js function to format number up to specified decimal places. -->
+
+<body>
+      <label for="num1">Please enter your floating point number </label>
+      <input type="text" id="num1" name="num1" value="" placeholder="Number">
+      <br><br>
+      <label for="num2">Please input the number of decimal place:  </label>
+      <input type="text" id="num2" name="num2" value="" placeholder="Decimal Place">
+      <br><br>
+      <button onclick="roundNum()"> Display  </button>
+      <h4> Rounding of numbers: </h4>
+      <p id="display"> </p>
+     
+    <script>
+        function roundNum() {
+            let number = (document.getElementById("num1").value);
+            let round = Math.round(document.getElementById("num2").value);
+            let result = parseFloat(number).toFixed(round);
+            document.getElementById("display").innerHTML = result;
+        }
+    </script>
+</body>
+
+<!-- 3.Check particular sub-word exist in a string or not e.g. i am learning js: 'js' exists or not -->
+ 
+<script>
+    const str = "This coding is for weekly task 1";
+    let strLower = str.toLowerCase();
+    let result = strLower.search("this");
+    if (result == -1) {
+        console.log("Search not found");
+    } else {
+        console.log("Search found at index: " + result);
+    }
+</script>
+
+
+
+<!-- 4.Given year leap year or not (29 in feb) -->
+
+<body>
+      <label for="year"> Enter the Year to check for Leap Year</label>
+      <input type="number" id="year" name="year" value="" placeholder="Enter Year"> <br>
+      <button onclick="checkLeap()"> Check if Leap Year</button>
+      <p id="display"> </p>
+
+     
+    <script>
+        checkLeap = () => {
+            let year = Math.round(document.getElementById("year").value);
+            let check = new Date(year, 1, 29).getDate();
+            if (check === 29) {
+                document.getElementById("display").innerHTML = "It is a leap year";
+            }
+            else {
+                document.getElementById("display").innerHTML = "It is not a leap year";
+            }
+        }
+    </script>
+</body>
+
+<!-- 6.Add only even numbers in an array (array elements to be input by user) -->
+
+<body>
+      <label for="num1">Please Input First Number </label>
+      <input type="text" id="num1" name="num1" value="" placeholder="Number">
+      <br><br>
+      <label for="num2">Please Input Second Number </label>
+      <input type="text" id="num2" name="num2" value="" placeholder="Decimal Place">
+      <br><br>
+      <label for="num1">Please Input Third Number </label>
+      <input type="text" id="num3" name="num3" value="" placeholder="Number">
+      <br><br>
+      <label for="num2">Please Input Fourth Number </label>
+      <input type="text" id="num4" name="num4" value="" placeholder="Decimal Place">
+      <br><br>
+      <button onclick="addEven()"> Sum of Even Numbers </button>
+      <h4> Sum of even numbers: </h4>
+      <p id="display"> </p>
+     
+    <script>
+        addEven = () => {
+            let array = [];
+            array.push(Math.round(document.getElementById("num1").value));
+            array.push(Math.round(document.getElementById("num2").value));
+            array.push(Math.round(document.getElementById("num3").value));
+            array.push(Math.round(document.getElementById("num4").value));
+
+            let evenArray = array.filter(ele => {
+                return (ele % 2 == 0)
+            })
+            console.log(evenArray);
+            if (evenArray.length !== 0) {
+                let sum = evenArray.reduce((t, n) => { return t + n });
+                document.getElementById("display").innerHTML = sum;
+            } else {
+                document.getElementById("display").innerHTML = "There is no even number"
+            }
+        }
+    </script>
+</body>
+
+
+<!-- 7.Biggest of even number in an array [10, 12, 90, 93, 707]: biggest even number is 90 -->
+ 
+<script>
+    let array = [10, 12, 90, 93, 707];
+    let evenArray = array.filter((ele) => {
+        return (ele % 2 == 0);
+    });
+    let result = Math.max(...evenArray);
+    console.log("The biggest even number is: " + result);
+</script>
+
+
+<!-- 8.Add two array [10,20,30] + [1,2,3]: [11, 22, 33] -->
+ 
+<script>
+    let array1 = [10, 20, 30];
+    let array2 = [1, 2, 3];
+    let newArray = [];
+    for (let i = 0; i < array1.length; i++) {
+        newArray.push(array1[i] + array2[i]);
+    }
+    console.log(newArray);
+</script>
+
+
+<!-- 9.Reverse an array(with loops) [10, 78, 0]: [0, 78, 10] -->
+<script>
+    let array = [10, 78, 0];
+    let newArray = [];
+    for (let i = array.length - 1; i >= 0; i--) {
+        newArray.push(array[i]);
+    }
+    console.log(newArray);
+</script>
+
+<!-- 10.Reverse a string using loops -->
+<script>
+    let str = "Hello World";
+    let newStr = "";
+    for (let i = str.length - 1; i >= 0; i--) {
+        newStr += str[i];
+    }
+    console.log(newStr);
+</script>
+
+
+<!-- 11.Remove duplicate items from an array [10, 50,20 67, 10, 20]: remove 10, 20 -->
+
+<script>
+    let array = [10, 50, 20, 67, 10, 20];
+    let newStr = new Set(array);
+    console.log(newStr);
+</script>
+
+
+
+<!-- 12.Ask user, remove a specific element from an array [12, 56, 89]: remove 1 element -->
+
+<body>
+      <h4> Current Array [12,56,89] </h4>
+      <label for="num1">Please Input Number to Remove</label>
+      <input type="number" id="num" name="num" value="" placeholder="Number">
+      <br><br>
+      <button onclick="removeNum()"> Remove Number </button>
+      <h4> New Array: </h4>
+      <p id="display"> </p>
+     
+    <script>
+        removeNum = () => {
+            let array = [12, 56, 89];
+            let num = Math.round(document.getElementById("num").value);
+            let index = array.indexOf(num);
+            array.splice(index, 1);
+            document.getElementById("display").innerHTML = array;
+        }
+    </script>
+</body>
+
+
+
+<!-- 13.Get the largest odd and even number in an array [10, 12, 900, 93, 707]. -->
+ 
+<script>
+    let array = [10, 12, 900, 93, 707];
+    let even = array.filter(ele => { return (ele % 2 == 0); })
+    let odd = array.filter(ele => { return (ele % 2 != 0); })
+    console.log(Math.max(...even));
+    console.log(Math.max(...odd));
+</script>
+
+<!-- 14.Take 3 inputs from user and structure them into objects. -->
+
+<body>
+      <h4> Current Array [12,56,89] </h4>
+      <label for="num1">Title</label>
+      <input type="text" id="str1" name="str1" value="" placeholder="Title"><br>
+      <label for="num1">First Name</label>
+      <input type="text" id="str2" name="str2" value="" placeholder="First Name"><br>
+      <label for="num1">Last Name</label>
+      <input type="text" id="str3" name="str3" value="" placeholder="Last Name"><br>
+      <br><br>
+      <button onclick="object()"> Create Object </button>
+      
+    <script>
+        object = () => {
+            let array = [];
+            array.push(document.getElementById("str1").value);
+            array.push(document.getElementById("str2").value);
+            array.push(document.getElementById("str3").value);
+            console.log(array);
+        }
+    </script>
+</body>
+
+
+
+
+<!-- 15.Create a class Car: city(),specialFeature()
+name, brand, color, manufacture -->
+<script>
+    class Car {
+        constructor(name, brand, color, manufacture) {
+            this.name = name;
+            this.brand = brand;
+            this.color = color;
+            this.manufacture = manufacture;
+        }
+
+        city(location) {
+            return this.location;
+        }
+
+        specialFeature(autopark) {
+            return this.autopark;
+        }
+    }
+
+</script>
+
+<!-- 16.Create a class Book: type_of_book()
+no. of pages, type of pages, author -->
+<script>
+    class Book {
+        constructor(pages, type, author) {
+            this.pages = pages;
+            this.type = type;
+            this.author = author;
+        }
+
+        type_of_book() {
+            return this.type;
+        }
+    }
+
+</script>
+
+<!-- 17.Create a class Animal: walk(), eat(), climb()
+gender, name, disease -->
+<script>
+    class Animal {
+        constructor(gender, name, disease) {
+            this.gender = gender;
+            this.name = name;
+            this.disease = disease;
+        }
+        walk() {
+            return console.log(this.name + " " + "walk");
+        }
+        eat() {
+            return console.log(this.name + " " + "eat");
+        }
+        climb() {
+            return console.log(this.name + " " + "climb");
+        }
+    }
+    var me = new Animal("female", "trex", "covid");
+    console.log(me);
+    console.log(me.walk());
+    console.log(me.eat());
+    console.log(me.climb());
+</script>
+
+<!-- 18.Inheritance: parent electronics (methods: name, version, company name): childclass(laptop, ipad, mobile, tablet):
+class child {
+configuration()
+price()
+} -->
+<script>
+    class Electronics {
+        constructor(name, version, company_name) {
+            this.name = name;
+            this.version = version;
+            this.company_name = company_name;
+        }
+    }
+    class Device extends Electronics {
+        constructor(name, version, company_name, type) {
+            super(name, version, company_name);
+            this.type = type;
+        }
+
+        configuration() {
+            console.log("The Product" + " " + this.name + "of version " + this.version + "made by " + this.company_name)
+        }
+
+        get brand() {
+            return this.type;
+        }
+
+        price(brand) {
+            console.log(this.brand);
+            if (this.brand == "laptop") {
+                return 1000;
+            } else if (this.brand == "ipad") {
+                return 2000;
+            } else if (this.brand == "mobile") {
+                return 800;
+            } else if (this.brand == "tablet") {
+                return 1500;
+            }
+            console.log("The price of " + this.type + "is " + this.price)
+        }
+    }
+    var me = new Device("lightbook", "1.2", "len", "laptop");
+    console.log(me.configuration());
+    console.log(me.brand);
+    console.log(me.price());
+</script>

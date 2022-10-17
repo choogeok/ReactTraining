@@ -1,0 +1,558 @@
+<!-- <!DOCTYPE html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head> -->
+
+
+
+<!-- Week 1 - Daily Task 2  -->
+
+<!-- 1. var enteredAlphabet = 'd' or "D"
+Write a program to check vowel, consonant or non-alphabet using switch case. Change value of enteredAlphabet and check
+if your code works fine.
+// Not sure about consonant -->
+<script>
+    var enteredAlphabet = 1;
+    switch (enteredAlphabet) {
+        case 'a':
+        case 'e':
+        case 'i':
+        case 'o':
+        case 'u':
+            alert("vowel input")
+            break;
+        case 0:
+        case 1:
+        case 2:
+        case 3:
+        case 4:
+        case 5:
+        case 6:
+        case 7:
+        case 8:
+        case 9:
+            alert("numeric input");
+            break;
+        default:
+            alert("input is not vowel, or numeric")
+    } 
+</script>
+
+<!-- 2.Write a JavaScript program to create menu driven calculator that performs basic arithmetic operations (add, subtract,
+multiply and divide) using switch case. The calculator should input two numbers and an operator: +, -, *, / from the
+user. It should perform operation according to the operator entered and must take input in given format. -->
+ <form>
+    <input type="number" id="num1" name="num1" value="" placeholder="First number" />
+     <input type="number" id="num2" name="num2" value="" placeholder="Second number" />
+     <input type="text" id="symbol" name="symbol" value="" placeholder="Please enter operation (+,-,*,/)" />
+     </form>
+ <button onclick="calculate()">Calculate Value</button>
+ <h5> The Result of the calculation is : </h5>
+ <p id="displayResult"> </p>
+
+<script>
+    function calculate() {
+        var symbol = document.getElementById("symbol").value;
+        let num1 = Math.round(document.getElementById("num1").value);
+        let num2 = Math.round(document.getElementById("num2").value);
+        switch (symbol) {
+            case "+":
+                let result = num1 + num2;
+                document.getElementById("displayResult").innerHTML = result;
+                break;
+            case "-":
+                let result1 = num1 - num2;
+                document.getElementById("displayResult").innerHTML = result1;
+                break;
+            case "*":
+                let result2 = num1 * num2;
+                document.getElementById("displayResult").innerHTML = result2;
+                break;
+            case "/":
+                let result3 = num1 / num2;
+                document.getElementById("displayResult").innerHTML = result3;
+                break;
+            default:
+                alert("operation is not found");
+                break;
+        }
+    }
+</script>
+
+
+<!-- 3.Write a JavaScript program to input sides of a triangle and check whether a triangle is equilateral, scalene or
+isosceles triangle using if else.
+Properties of triangle:
+A triangle is said Equilateral Triangle, if all its sides are equal. If a, b, c are three sides of triangle. Then, the
+triangle is equilateral only if a == b == c.
+A triangle is said Isosceles Triangle, if its two sides are equal. If a, b, c are three sides of triangle. Then, the
+triangle is isosceles if either a == b or a == c or b == c.
+A triangle is said Scalene Triangle, if none of its sides are equal. -->
+
+<body>
+      <form>
+            <p>Please Enter the three sides of the triangle </p>
+            <input type="number" id="side1" name="side1" value="" placeholder="First side" />
+            <input type="number" id="side2" name="side2" value="" placeholder="Second side" />
+            <input type="number" id="side3" name="side3" value="" placeholder="Third side" />
+          </form>
+      <button onclick="calculate()"> Check Triangle Type </button>
+      <h5> The triangle is : </h5>
+      <p id="displayResult"> </p>
+     
+    <script>
+        function calculate() {
+            let side1 = Math.round(document.getElementById("side1").value);
+            let side2 = Math.round(document.getElementById("side2").value);
+            let side3 = Math.round(document.getElementById("side3").value);
+            if (side1 == side2 && side2 == side3) {
+                document.getElementById("displayResult").innerHTML = "Equilateral";
+            }
+            else if (side1 == side2 || side1 == side3 || side2 == side3) {
+                document.getElementById("displayResult").innerHTML = "isosceles";
+            }
+            else if (side1 !== side2 && side1 !== side3 && side2 !== side3) {
+                document.getElementById("displayResult").innerHTML = "Scalene";
+            } else {
+                alert("not an Equilateral or Isosceles or Scalene");
+            }
+        }
+    </script>
+</body>
+
+
+<!-- 4.Write a JavaScript program to input electricity unit charge and calculate the total electricity bill according to the
+given condition:
+For first 50 units Rs. 0.50/unit
+For next 100 units Rs. 0.75/unit
+For next 100 units Rs. 1.20/unit
+For unit above 250 Rs. 1.50/unit. An additional surcharge of 20% is added to the bill.
+For example, input: 20 units then bill is Rs10
+Total Units: 300
+50 * 0.5 = 25
+100 * 0.75 = 75
+100 * 1.2 = 120
+50 * 1.5 = 75
+Total = 295 + 20% surcharge on 295
+Result = INR 354 -->
+
+<body>
+      <form>
+            <input type="number" id="num1" name="num1" value="" placeholder="Total Electricity Unit" />
+          </form>
+      <button onclick="calculate()"> Total Cost </button>
+      <h5> The total cost of the Electricity Bill is : </h5>
+      <p id="displayResult"> </p>
+     
+    <script>
+        function calculate() {
+            let num1 = Math.round(document.getElementById("num1").value);
+            if (num1 < 50) {
+                let cost = num1 * 0.5;
+                document.getElementById("displayResult").innerHTML = cost;
+            }
+            else if (num1 > 50) {
+                let balance1 = num1 - 50;
+                if (balance1 <= 100) {
+                    let cost = ((balance1 * 0.75) + (50 * 0.5));
+                    document.getElementById("displayResult").innerHTML = cost;
+                } else if (balance1 > 100) {
+                    let balance2 = balance1 - 100;
+                    if (balance2 <= 100) {
+                        let cost = ((balance2 * 1.2) + (100 * 0.75) + (50 * 0.5));
+                        document.getElementById("displayResult").innerHTML = cost;
+                    } else if (balance2 > 100) {
+                        let balance3 = balance2 - 100;
+                        let surcharge = ((balance3 * 1.5) + (100 * 1.2) + (100 * 0.75) + (50 * 0.5)) * 20 / 100;
+                        let cost = ((balance3 * 1.5) + (100 * 1.2) + (100 * 0.75) + (50 * 0.5)) + surcharge;
+                        document.getElementById("displayResult").innerHTML = cost;
+                    }
+                }
+            }
+        }  
+    </script>
+
+
+    <!-- 5.Create parametized method/function to multiply 3 numbers -->
+       
+    <script>
+        function calculate(a, b, c) {
+            let result = (a * b * c);
+            return result;
+        }
+        var cost = calculate(10, 10, 10);
+        document.getElementById("displayResult").innerHTML = cost;
+    </script>
+
+<!-- 
+    6.Create parametized method to divide 2 numbers -->
+
+    <body>
+           <h5> The sum of the three numbers is: </h5>
+           <p id="displayResult"> </p>
+           
+        <script>
+            function calculate(a, b) {
+                let result = (a / b);
+                return result;
+            }
+            var cost = calculate(100, 10);
+            document.getElementById("displayResult").innerHTML = cost;
+        </script>
+         
+    </body>
+
+    <!-- 7.Find the biggest of 3 numbers  (89, 78, 56) -->
+     
+       
+    <script>
+        function calculate(a, b, c) {
+            let result = Math.max(a, b, c);
+            return result;
+        }
+        var cost = calculate(100, 10, 20);
+        document.getElementById("displayResult").innerHTML = cost;
+    </script>
+
+
+    <!-- 8.Take user input: value is even or odd -->
+      <form>
+            <input type="number" id="num" name="num" value=""" placeholder=" Input number" />
+          </form>
+      <br>
+      <button onclick="calculate()"> Check Even or Odd</button>
+       
+    <script>
+        function calculate(numbers) {
+            var numbers = document.getElementById('num').value;
+            console.log(numbers);
+            let result = numbers % 2;
+            if (result == 0) {
+                document.getElementById("displayResult").innerHTML = "Input is even";
+            } else if (result === 1) {
+                document.getElementById("displayResult").innerHTML = "Input is odd";
+            }
+        }
+    </script>
+     
+</body>
+
+
+<!-- 9.Take user input: given number is multiple of 3 or not e.g.10900 -->
+<script>
+    function calculate() {
+        var value = Math.round(document.getElementById("num").value);
+        var valueDivide = parseInt(value / 3);
+        if ((valueDivide * 3) === value) {
+            document.getElementById("display").innerHTML = "Number is divisible by 3"
+        } else {
+            document.getElementById("display").innerHTML = "Number is not divisible by 3"
+        }
+    }
+</script>
+
+
+<!-- 10.Take user input: calculate simple interest ((p/r * t) * 100 ) -->
+
+<body>
+       <h5> The sum of the three numbers is: </h5>
+       <p id="displayResult"> </p>
+      <form>
+            <input type="number" id="num1" name="num1" value=""" placeholder=" Principal Rate" />
+            <input type="number" id="num2" name="num2" value=""" placeholder=" Rate" />
+            <input type="number" id="num3" name="num3" value=""" placeholder=" Time" />
+          </form>
+      <br>
+      <button onclick="calculate()"> Calculate Interest Rate </button>
+       
+    <script>
+        function calculate() {
+            var num1 = document.getElementById('num1').value;
+            var num2 = document.getElementById('num2').value;
+            var num3 = document.getElementById('num3').value;
+            let result = ((num1 / num2 * num3) * 100);
+            document.getElementById("displayResult").innerHTML = result;
+        }
+    </script>
+     
+</body>
+
+
+<!-- 11.Take user input: 0-6 display day week depending upon what user is entering (0-> sunday) : using switch -->
+
+<body>
+       <h5> The sum of the three numbers is: </h5>
+       <p id="displayResult"> </p>
+      <form>
+            <input type="number" id="num1" name="num1" value=""" placeholder=" Input value" />
+              </form>
+      <br>
+      <button onclick="calculate()"> Check the Day </button>
+       
+    <script>
+        function calculate() {
+            var num1 = Math.round(document.getElementById('num1').value);
+            switch (num1) {
+                case 0:
+                    result = "Sunday";
+                    break;
+                case 1:
+                    result = "Monday";
+                    break;
+                case 2:
+                    result = "Tuesday";
+                    break;
+                case 3:
+                    result = "Wednesday";
+                    break;
+                case 4:
+                    result = "Thursday";
+                    break;
+                case 5:
+                    result = "Friday";
+                    break;
+                case 6:
+                    result = "Saturday";
+                    break;
+            }
+            document.getElementById("displayResult").innerHTML = result;
+        }
+    </script>
+     
+</body>
+
+<!-- 12.Use loops, conditional statements, take input from user
+a)Multiplication table (ask number from user) -->
+
+<body>
+       <h5> The Multiplication Table: </h5>
+       <p id="displayResult"> </p>
+      <form>
+            <input type="number" id="num" name="num" value="" placeholder="Input value" />
+              </form>
+      <br>
+      <button onclick="calculate()"> Multiplication Table </button>
+       
+    <script>
+        function calculate() {
+            var num = Math.round(document.getElementById('num').value);
+            for (let i = 1; i <= 10; i++) {
+                let result = (i * num);
+                document.getElementById("displayResult").innerHTML += result + " ";
+            }
+        }
+    </script>
+     
+</body>
+
+
+<!-- b)Sum of digits: e.g. (123: 1 + 2 + 3 = 6) or (1234 : 1 + 2 + 3 + 4 = 10) : hint - loops, divisor and modulus -->
+
+<body>
+      <h5> Sum of Digit </h5>
+      <p id="displayResult"> </p>
+      <form>
+            <input type="number" id="num" name="num" value="" placeholder="Input value" />
+          </form>
+      <br>
+      <button onclick="calculate()"> Sum Number </button>
+     
+    <script>
+        function calculate() {
+            var num = document.getElementById('num').value;
+            var numSplit = num.split('');
+            var sum = 0;
+            for (let i = 0; i < numSplit.length; i++) {
+                var value = Math.round(numSplit[i]);
+                sum += value;
+            }
+            document.getElementById("displayResult").innerHTML = sum;
+        }
+    </script>
+
+
+
+    <!-- c)Pallindrome string (aca: aca(reverse) is a pallindrome, abc: cba is not a Pallindrome) -->
+
+    <body>
+          <h5> Pallindrome String </h5>
+          <p id="displayResult"> </p>
+          <form>
+                <input type="text" id="str" name="str" value="" placeholder="Input String" />
+              </form>
+          <br>
+          <button onclick="calculate()"> Check Pallindrome </button>
+         
+        <script>
+            function calculate() {
+                var inputStr = document.getElementById('str').value;
+                var reverseStr = inputStr.split('').reverse().join('');
+                if (reverseStr === inputStr) {
+                    document.getElementById("displayResult").innerHTML = "The String is Pallindrome";
+                } else {
+                    document.getElementById("displayResult").innerHTML = "The String is not a Pallindrome";
+                }
+            }
+        </script>
+    </body>
+
+<!-- 
+    d)display even numbers up to n number (ask user for number) -->
+
+    <body>
+           <h5> The Number Display </h5>
+           <p id="displayResult"> </p>
+          <form>
+                <input type="number" id="num" name="num" value="" placeholder="Input value" />
+                  </form>
+          <br>
+          <button onclick="calculate()"> Even Number </button>
+         
+        <script>
+            function calculate() {
+                var num = Math.round(document.getElementById('num').value);
+                let result = 0;
+                for (let i = 1; i <= num; i++) {
+                    result += 2;
+                    document.getElementById("displayResult").innerHTML += result + " ";
+                }
+            }
+        </script>
+         
+    </body>
+
+
+
+    <!-- e)Count of even and odd number from 1 to 999 -->
+
+    <body>
+          <h5> Count of even and odd number between 1 to 999 </h5>
+          Even: <p id="displayEven"> </p>
+          Odd: <p id="displayOdd"> </p>
+          <br>
+          <button onclick="calculate()"> Calculate Even and Odd </button>
+         
+        <script>
+            function calculate() {
+                var countEven = 0;
+                var countOdd = 0;
+                for (let num = 1; num < 1000; num++) {
+                    if (num % 2 == 0) {
+                        countEven++;
+                    } else countOdd++
+                }
+                document.getElementById("displayEven").innerHTML = countEven;
+                document.getElementById("displayOdd").innerHTML = countOdd;
+            }
+        </script>
+    </body>
+    <!-- f)Count occurrence of a particular character in a string (hello: count of l is 2) -->
+    <script>
+        function calculate() {
+            var count = 0;
+            var str = document.getElementById("str").value;
+            var search = document.getElementById("strSearch").value;
+            var strArray = str.split("");
+            for (let i = 0; i < strArray.length; i++) {
+                strWord = strArray[i];
+                if (strWord.indexOf(search) != -1) {
+                    count++;
+                } document.getElementById("display").innerHTML = count;
+            }
+        } 
+    </script>
+<!-- 
+    g)Sum and average of array elements [1, 9, 8]; -->
+    <script>
+        function calculate() {
+            var array = [1, 9, 8];
+            var value = "";
+            var sum = 0;
+            var average = 0;
+            for (let i = 0; i < array.length; i++) {
+                value = array[i];
+                sum += value;
+            }
+            average = (sum / array.length)
+            document.getElementById("display").innerHTML = average;
+        }
+    </script>
+
+
+    <!-- h)Largest number in an array (do with loops) -->
+    <script>
+        var array = [1, 8, 3, 9, 5, 6, 7];
+        var big = 0;
+        function calculate() {
+            for (let i = 0; i < array.length; i++) {
+                big = array[i];
+                for (let j = 0; j < array.length; j++) {
+                    if (big < array[j + 1]) {
+                        big = array[j + 1];
+                    }
+                }
+            } console.log(big);
+        }
+    </script>
+
+
+    <!-- 13.From 1 to 100, print "foo" if multiple of 3, "bar" if multiple of 5, if multiple of both
+    display "hello" or else print the number
+    e.g.
+    1
+    2
+    foo
+    4
+    bar
+    foo -->
+
+    
+    <script>
+        function calculate() {
+            for (let i = 1; i <= 100; i++) {
+                var mult3 = parseInt(i / 3);
+                var res3 = mult3 * 3;
+                var mult5 = parseInt(i / 5);
+                var res5 = mult5 * 5;
+                if (res3 === i) {
+                    console.log("foo");
+                } else if (res5 === i) {
+                    console.log("bar");
+                } else if (res3 === i && res5 === i) {
+                    console.log("hello");
+                } else {
+                    console.log(i);
+                }
+            }
+        }
+    </script>
+
+
+
+
+
+    <!-- 14.Using selectors: create a list in html: ask user any item from list display 'item' found.
+    // Not sure
+      -->
+    <script>
+        function calculate() {
+            var list = document.getElementsByClassName("item");
+            var str = document.getElementById("str").value;
+            for (let i = 0; i < list.length; i++) {
+                var value = list[i].innerHTML;
+                if (value == str) {
+                    console.log("exist");
+                } else {
+                    console.log("does not exist");
+                }
+            }
+        }
+    </script>

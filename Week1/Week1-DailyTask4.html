@@ -1,0 +1,208 @@
+<!-- <!DOCTYPE html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head> -->
+
+
+
+<!-- Week 1 - Daily Task 4  -->
+<!-- 1.Create multiply, division, subtraction function with arrow function/fat arrow -->
+  <input type="text" id="num1" name="num1" value="" placeholder="First number" />
+  <input type="text" id="num2" name="num2" value="" placeholder="Second number" />
+  <h4> The result of the operation is: </h4>
+  <p id="display"> </p>
+  <button onclick="add()"> Add </button>
+  <button onclick="subtract()"> Subtract </button>
+  <button onclick="divide()"> Divide </button>
+  <button onclick="multiple()"> Multiple </button>
+ 
+<script>
+  let reuslt = 0;
+  let num1 = document.getElementById("num1");
+  let num2 = document.getElementById("num2");
+  add = () => {
+    result = (Math.round(num1.value) + Math.round(num2.value));
+    document.getElementById("display").innerHTML = result;
+  }
+  subtract = () => {
+    result = (Math.round(num1.value) - Math.round(num2.value));
+    document.getElementById("display").innerHTML = result;
+  }
+  divide = () => {
+    result = (Math.round(num1.value) / Math.round(num2.value));
+    document.getElementById("display").innerHTML = result;
+  }
+  multiple = () => {
+    result = (Math.round(num1.value) * Math.round(num2.value));
+    document.getElementById("display").innerHTML = result;
+  }
+</script>
+
+<!-- 2.Create a employee object and display its data in console (for...in). -->
+<script>
+  let text = "";
+  const employee = {
+    name: "alex",
+    id: "1",
+    dept: "IT",
+    phone: "12345678"
+  };
+  for (let x in employee) {
+    text = employee[x];
+    console.log(x + ": " + text);
+  }
+</script>
+
+<!-- 3.Use Array helper functions
+a.Check if all the property values(firstName) in an array of object is same or not
+array of object -->
+<script>
+  let array = [{
+    firstName: 'alina',
+    id: 1,
+    age: 14
+  }, {
+    firstName: 'harry',
+    id: 2,
+    age: 15
+  }, {
+    firstName: 'alex',
+    id: 3,
+    age: 16
+  }];
+  const value = array.map((ele) => ele.firstName);
+  const result = value.some((item) => {
+    if (value.indexOf(item) !== value.lastIndexOf(item)) {
+      console.log("Duplicate item " + value.firstName)
+    } console.log("No Duplicate item")
+  });
+</script>
+<!-- b.Get the value of the first element in an array that has value greater than 20 -->
+ 
+<script>
+  const array = [1, 2, 3, 4, 5, 20, 21, 30, 50];
+  const value = array.find(ele => {
+    return ele > 20;
+  }); console.log(value);
+</script>
+
+<!-- c.Get the value of the first element in an array that has value less than 20 -->
+<script>
+  const array = [1, 2, 3, 4, 5, 20, 21, 30, 50];
+  const value = array.find(ele => {
+    return ele < 20;
+  }); console.log(value);
+</script>
+<!-- d.Filter data based on a id(property) in an array of objects: pick any random id value -->
+<script>
+  const array =
+    [{
+      firstName: 'alina',
+      id: 1,
+      age: 14
+    }, {
+      firstName: 'harry',
+      id: 2,
+      age: 15
+    }, {
+      firstName: 'alex',
+      id: 3,
+      age: 16
+    }]
+  const filterArray = array.filter(ele => {
+    return (ele.id == 3)
+  })
+  console.log(filterArray);
+</script>
+<!-- e.Round off all the decimal numbers in an array and sum all the values [9.8, 9.7, 4.5, 3.4] -->
+ 
+<script>
+  let result = [];
+  let sum = 0;
+  let array = [9.8, 9.7, 4.5, 3.4]
+  result = array.map((ele) => {
+    ele = Math.round(ele);
+    sum += ele;
+    return sum;
+  });
+  console.log("Sum of the array is:" + sum);
+</script>
+
+<!-- f.Get all the person name based on age greater than and equal to 18, eligible to vote -->
+<script>
+  let array = [{
+    firstName: 'joe',
+    age: 24
+  }, {
+    firstName: 'alina',
+    age: 12
+  },
+  {
+    firstName: 'alex',
+    age: 20
+  }]
+
+  let result = array.filter((ele) => {
+    return ele.age >= 18
+  });
+  console.log(result);
+</script>
+
+
+<!-- g.Sum all the elements of an array [90, 89, 56, 45] -->
+<script>
+  let array = [90, 89, 56, 45]
+  let result = array.reduce((t, n) => {
+    return t + n;
+  });
+  console.log(result);
+</script>
+
+<!-- h.Check element is odd or even in an array [90, 89, 56, 45] -->
+<script>
+  let array = [90, 89, 56, 45]
+  let result = array.map((ele) => {
+    if (ele % 2 === 0) {
+      console.log(ele + ": is even")
+    } else {
+      console.log(ele + ": is odd")
+    }
+  })
+</script>
+
+<!-- i.Sum of all the salaries and display final sum value -->
+
+<script>
+  let array = [{
+    salary: 56000,
+  },
+  {
+    salary: 90000,
+  }
+  ];
+
+  let result = array.reduce((total, item) => {
+    return (total + item.salary)
+  }, 0);
+  console.log(result);
+</script>
+
+
+
+<!-- j.Concat all array elements ['red', 'pink', 'orange', 'red']: 'redpinkorangered' -->
+ 
+<script>
+  let array = ['red', 'pink', 'orange', 'red']
+  let result = array.reduce((t, n) => {
+    return t + n;
+  });
+  console.log(result);
+</script>

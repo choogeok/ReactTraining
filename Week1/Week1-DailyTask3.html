@@ -1,0 +1,110 @@
+<!-- <!DOCTYPE html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head> -->
+
+
+
+<!-- Week 1 - Daily Task 3  -->
+<!-- 1.Display alert box after 3 seconds of website loaded. -->
+
+<script>
+    function code() {
+        setTimeout(function () {
+            alert("Page loaded and alert box display after 3 seconds")
+        },
+            3000);
+    }
+    window.onload = code
+</script>
+
+<!-- 2.Look for API and display few data records in UI (movie data api) -->
+
+<script>
+    function getData() {
+        axios.get('https://randomuser.me/api/?nat=US&results=10')
+            .then((response) => response.data)
+            .then(name => showName(name.results))
+            .catch(err => console.log(err))
+    }
+
+    function showName(data) {
+        data.map((ele) => {
+            const resultElement = document.createElement('li');
+            resultElement.innerText = `Name:${ele.name.title} ${ele.name.first} ${ele.name.last}`;
+            document.querySelector("#display").append(resultElement);
+        })
+    }
+</script>
+
+<!-- 3.Create a function to get data from user and display that in callback function -->
+
+
+<script>
+    function getData(display) {
+        var str = document.getElementById("str").value;
+        display(str);
+    }
+    function display(result) {
+        document.getElementById("display").innerHTML = result;
+    }
+</script>
+
+<!-- 4.Use the Promise constructor to create a promise that will:
+5.resolve if itShouldResolve is truthy
+6.reject if itShouldResolve is falsy -->
+
+
+<script>
+    var itShouldResolve = false;
+    var promise = new Promise(function (myResolve, myReject) {
+        if (itShouldResolve == true) {
+            myResolve(console.log("truthy"));
+        } else {
+            myReject(console.log("falsy"));
+        }
+    });
+</script>
+
+<!-- 7.Return a promise that resolves with the value after delayInMs. -->
+<script>
+    let myPromise = new Promise(function (myResolve, myReject) {
+        setTimeout(function () { console.log("Promise is resolved") }, 3000)
+    })
+</script>
+
+<!-- 8.Make a function that takes in a single parameter and returns a new promise. using setTimeout, after 5000 milliseconds,
+the promise will either resolve or reject. if the input is a string, the promise resolves with that same string
+uppercased. if the input is anything but a string it rejects with that same input -->
+
+<script>
+    let promise = new Promise(function (resolve, reject) {
+        setTimeout(() => {
+            let value = document.getElementById("str").value
+            console.log("value is:" + value);
+            let result = "";
+            if (typeof (value) == "string") {
+                result = value.toUpperCase();
+                console.log("result" + result);
+                resolve(result);
+            } else {
+                console.log("reject" + value);
+                reject(value)
+            }
+        }, 5000)
+    });
+
+    const onFulfillment = (result) => { document.getElementById("display").innerHTML = result; }
+    const onRejection = (value) => { document.getElementById("display").innerHTML = value; }
+
+    promise.then(onFulfillment)
+        .catch(onRejection) 
+</script>
