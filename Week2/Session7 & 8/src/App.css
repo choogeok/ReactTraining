@@ -1,0 +1,16 @@
+h4{
+  font-size: 25px;
+  font-family: 'Roboto', sans-serif;
+  color: blue;
+}
+
+ul {
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+  color: rgb(75, 107, 60);
+
+}
+.personImage{
+width: 150px;
+height: 200px;
+}
