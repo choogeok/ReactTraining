@@ -1,0 +1,57 @@
+* {
+    box-sizing: border-box;
+}
+
+h5{ 
+    color: rgb(142, 58, 58);
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+} 
+
+fieldset{
+    border-radius: .5rem;
+    padding:20px;
+    width: 40%;
+    margin: auto;
+}
+
+legend{
+    color:darkblue;
+    margin: left;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+label {
+    display: block;
+    color: darkgreen;
+    font-family: 'Roboto', sans-serif;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 700;
+    font-style: bold;
+   }
+
+
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+textarea
+{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    color: rgb(23, 78, 97);
+    padding:10px;
+    border-radius: 4px;
+    border: 1px solid lightblue;
+    background-color: rgb(238, 237, 237);
+}
+
+.card{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    color:blue;
+    font-size: 16px;
+}
