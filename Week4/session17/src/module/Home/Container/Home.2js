@@ -1,0 +1,103 @@
+import React, { Component } from "react";
+
+class Home extends Component {
+  constructor() {
+    super();
+    this.state = {
+      player: '',
+      score: 0,
+      formIsValid: false,
+      playerError: '',
+      scoreError: '',
+    };
+  }
+
+  handleChange = (event) => {
+    if (event.target.id == "player") {
+      this.validatePlayer(event.target.value);
+      console.log(event.target.value);
+    } else if (event.target.id == "score") {
+      this.validateScore(event.target.value);
+    }
+  };
+
+  validatePlayer = (updatePlayer) => {
+    let playerError = this.state.playerError;
+    let formIsValid = this.state.formIsValid;
+    if (updatePlayer.trim() === "") {
+      playerError = "Please enter Player Name";
+      formIsValid = false;
+    } else {
+      playerError = '';
+      formIsValid = true;
+    }
+    this.setState({
+      player: updatePlayer,
+      playerError: playerError,
+      formIsValid: formIsValid,
+    });
+    console.log(player);
+    return formIsValid;
+  };
+
+  validateScore = (updateScore) => {
+    let scoreError = this.state.scoreError;
+    let formIsValid = this.state.formIsValid;
+    if (updateScore === '') {
+      scoreError = "Please enter Score";
+      formIsValid = false;
+    } else {
+      scoreError = "";
+      formIsValid = true;
+    }
+    this.setState({
+      score: updateScore,
+      scoreError: scoreError,
+      formIsValid: formIsValid,
+    });
+    console.log(score);
+    return formIsValid;
+  };
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    let player = this.validatePlayer(this.state.email);
+    let score = this.validateScore(this.state.score);
+    if ( player && score && formIsValid) 
+     {
+       let player = "";
+      let score = "";
+      let playerError = "";
+      let scoreError = "";
+      this.state({
+        player: player,
+        playerError: playerError,
+        score: score,
+        scoreError: scoreError,
+      });
+    }
+  };
+
+  render() {
+
+    return (
+      <div>
+        <h1>Players Score Board </h1>
+        <form onSubmit={this.handleSubmit}>
+          <label htmlFor="player"> Player Name </label>
+          <input
+            type="text" id="player" name="player" value={this.state.player} onChange={this.handleChange}/>
+          <p style={{ color: "maroon" }}>{this.state.playerError} </p>
+
+          <label htmlFor="score"> Score </label>
+          <input type="number" id="score" name="score" value={this.state.score} onChange={this.handleChange}/>
+          <p style={{ color: "maroon" }}>{this.state.scoreError} </p>
+
+          <button onClick={this.handleSubmit}> Update Players Score</button>
+        </form>
+      </div>
+    );
+  }
+}
+
+export default Home;
